@@ -1,0 +1,23 @@
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import './NotFoundPage.css'
+
+class NotFoundPage extends Component {
+    render() {
+        return (
+            <div className="NotFoundPage">
+                <main class="NotFoundPage__Main">
+                    <h1>404 Not Found</h1>
+                    <h3>Sorry, this page doesn't exist!</h3>
+                    <button>
+                        <Link to="/home">
+                            home
+                        </Link>
+                    </button>
+                </main>
+            </div>
+        )
+    }
+}
+
+export default NotFoundPage
