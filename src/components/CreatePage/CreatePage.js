@@ -10,18 +10,7 @@ class CreatePage extends Component {
 
 constructor(props) {
     super(props)
-    this.state = {
-        openCategory: null,
-    }
-}
-
-changeAccordion(event, id) {
-  event.preventDefault();
-  if (id === this.state.openCategory) {
-    this.setState({ openCategory: null })
-  } else {
-    this.setState({ openCategory: id })
-  } 
+    this.state = {}
 }
 
 showNewItemForm = (event) => {
@@ -31,29 +20,8 @@ showNewItemForm = (event) => {
     })
 }
 
-handleAddRecipeItem = (event) => {
-    event.preventDefault();
-    const ingredientName = event.target.label.value
-    const ingredientAmount = event.target.amount.value
-    const ingredientUnits = event.target.units.value
-    const recipeString = ingredientAmount + ' ' + ingredientUnits + ' ' + ingredientName
-    console.log(recipeString)
-    const newRecipe = []
-    newRecipe.push(recipeString)
-    console.log(newRecipe)
-}
-
-handleAddNewItem = (event) => {
-    event.preventDefault();
-    const itemCategory = event.target.newItemCategory.value
-    console.log(itemCategory)
-    const itemName = event.target.newItemName.value
-    console.log(itemName)
-}
-
-
 render() {
-    //const { openCategory } = this.state;
+    
     return (
         <div className="CreatePage">
             <main className="CreatePage__Main">
