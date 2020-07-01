@@ -17,7 +17,6 @@ class RecipeBox2 extends Component {
     handleRecipeSubmit = (event) => {
         event.preventDefault();
         const smoothieName = event.target.title.value
-        console.log(smoothieName)
         const userName = this.context.userData.userName
         const userId = this.context.userData.id
         const recipeId = 12321
@@ -62,7 +61,7 @@ class RecipeBox2 extends Component {
                 </div>
                 <div className="Recipe__Box">
                     {recipeStrings.map(r => 
-                        <div className="Recipe__Item">
+                        <div className="Recipe__Item" key={r}>
                             <h3>{r}</h3>
                             <button 
                                 onClick={(e) => this.props.deleteStringItem(e, r)}>

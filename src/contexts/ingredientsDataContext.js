@@ -132,7 +132,6 @@ export class IngredientsDataProvider extends Component {
     }
 
     addNewIngredient = (itemCategory, itemName) => {
-        console.log(`Add new item was clicked: ${itemCategory} ${itemName}`)
         const { ingredientsData } = this.state
         const targetCategoryIndex = ingredientsData.findIndex(ingredient => ingredient.category === itemCategory)
         this.setState(prevState => {
@@ -141,7 +140,6 @@ export class IngredientsDataProvider extends Component {
             targetCategory.ingredients.push(itemName)
             return { ingredientsData }      
         })
-        console.log('new state: ', this.state.ingredientsData)
     }
 
     render() {

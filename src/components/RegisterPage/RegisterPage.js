@@ -6,7 +6,7 @@ class RegisterPage extends Component {
     onRegister = (event) => {
         event.preventDefault();
         const desiredUsername = event.target.desiredUsername.value
-        const desiredPassword = event.target.desirePassword.value
+        const desiredPassword = event.target.desiredPassword.value
         console.log(desiredUsername, desiredPassword)
     }
 
@@ -17,28 +17,26 @@ class RegisterPage extends Component {
                     <h1>Register</h1>
                     <form onSubmit={this.onRegister}>
                         <label htmlFor="desiredUsername">
-                            <input 
-                                type="text"
-                                name="desiredUsername"
-                                id="desiredUsername"
-                                required
-                            />
-                            <br/>
                             desired username
-                            <br/>
                         </label>
                         <br/>
+                        <input 
+                            type="text"
+                            name="desiredUsername"
+                            id="desiredUsername"
+                            required
+                        />    
+                        <br/>
                         <label htmlFor="desiredPassword">
-                            <input 
-                                type="text"
-                                name="desiredPassword"
-                                id="desiredPassword"
-                                required
-                             />
-                            <br/>
                             desired password
-                            <br/>
                         </label>
+                        <br/>
+                        <input 
+                            type="text"
+                            name="desiredPassword"
+                            id="desiredPassword"
+                            required 
+                        />
                         <br/>
                         <button>submit</button>
                     </form>

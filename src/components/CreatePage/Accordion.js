@@ -26,22 +26,19 @@ class Accordion extends Component {
         const ingredientName = event.target.ingredient.value
         const ingredientAmount = event.target.amount.value
         const ingredientUnits = event.target.units.value
-        console.log(ingredientName, ingredientAmount, ingredientUnits)
         const recipeString = ingredientAmount + ' ' + ingredientUnits + ' ' + ingredientName
-        console.log(recipeString)
         this.props.stringDisplay(recipeString)
     }
 
     render () {
         const { openCategory } = this.state;
         const data = this.context.ingredientsData
-        console.log(data)
         return (
             <div className="Ingredients__Box">
                 <h3>Pick your ingreditents</h3>
                 <div className="Ingredients__List">
                     {data.map(d => 
-                        <div className="Ingredients__Category">
+                        <div className="Ingredients__Category" key={d.id}>
                             <h4>
                                 <button onClick={event => this.changeAccordion(event, d.id)}>
                                     {d.category}
@@ -49,7 +46,7 @@ class Accordion extends Component {
                             </h4>
                             {d.id === openCategory &&
                                 d.ingredients.map(i => 
-                                    <div className="Ingredients__Item">
+                                    <div className="Ingredients__Item" key={i}>
                                         <form onSubmit={this.handleAddRecipeItem}>
                                             <span>{i}</span>
                                             <input

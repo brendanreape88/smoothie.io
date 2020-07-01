@@ -21,6 +21,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 1,
                     smoothieName: "Green Machine",
+                    smoothiePicture: "https://joyfoodsunshine.com/wp-content/uploads/2019/07/green-smoothie-recipe-2.jpg",
                     userName: "greenguru",
                     userId: 1,
                     recipe: [
@@ -35,6 +36,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 2,
                     smoothieName: "Whey Protein Breakfast Blast",
+                    smoothiePicture: "https://i.ibb.co/s1bRR5Q/whey-protein-breakfast-blast.jpg",
                     userName: "greenguru",
                     userId: 1,
                     recipe: [
@@ -50,6 +52,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 3,
                     smoothieName: "Sunrise Breakfast Smoothie",
+                    smoothiePicture: "https://i.ibb.co/Lt2MPNz/sunrise-breakfast-smoothie.jpg",
                     userName: "wholefoodie",
                     userId: 2,
                     recipe: [
@@ -66,6 +69,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 4,
                     smoothieName: "Mango Mint Green Smoothie",
+                    smoothiePicture: "https://i.ibb.co/84hwRZD/mango-mint-green-smoothie.jpg",
                     userName: "wholefoodie",
                     userId: 2,
                     recipe: [
@@ -81,6 +85,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 5,
                     smoothieName: "Pineapple Breeze",
+                    smoothiePicture: "https://i.ibb.co/3zL80TX/pineapple-breeze-smoothie.jpg",
                     userName: "greenguru",
                     userId: 1,
                     recipe: [
@@ -93,6 +98,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 6,
                     smoothieName: "Sunny Citrus Smoothie",
+                    smoothiePicture: "https://i.ibb.co/0Cnh663/sunny-citrus-smoothie.jpg",
                     userName: "wholefoodie",
                     userId: 2,
                     recipe: [
@@ -107,6 +113,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 7,
                     smoothieName: "Blueberry Muffin Smoothie",
+                    smoothiePicture: "https://i.ibb.co/9gVL05J/blueberry-muffin-smoothie.jpg",
                     userName: "greenguru",
                     userId: 1,
                     recipe: [
@@ -122,6 +129,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 8,
                     smoothieName: "Strawberry Almond Butter Smoothie",
+                    smoothiePicture: "https://i.ibb.co/TtLpgnD/strawberry-alomnd-butter-smoothie.jpg",
                     userName: "wholefoodie",
                     userId: 2,
                     recipe: [
@@ -134,6 +142,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 9,
                     smoothieName: "Chocolate-Almond Banana Smoothie",
+                    smoothiePicture: "https://i.ibb.co/cFSYMfL/chcolate-almond-banana-smoothie.jpg",
                     userName: "wholefoodie",
                     userId: 2,
                     recipe: [
@@ -146,6 +155,7 @@ export class UserDataProvider extends Component {
                 {
                     id: 10,
                     smoothieName: "Get Your Greens",
+                    smoothiePicture: "https://i.ibb.co/RyGtZXJ/get-your-greens-smoothie.jpg",
                     userName: "wholefoodie",
                     userId: 2,
                     recipe: [
@@ -248,11 +258,9 @@ export class UserDataProvider extends Component {
         const favoritesArray = this.state.userData.userFavorites
         if (favoritesArray.find(f => f === recipeId)) {
             const removeItemArray = favoritesArray.filter(f => f !== recipeId)
-            console.log(removeItemArray)
             this.setState({ userData: {userFavorites: removeItemArray} })
         } else {
-            const addItemArray = favoritesArray.push(recipeId)
-            console.log(addItemArray)
+            favoritesArray.push(recipeId)
         }
     }
 

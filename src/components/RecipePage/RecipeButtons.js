@@ -6,7 +6,6 @@ class RecipeButtons extends Component {
 
     render() {
         const recipe = this.props.match
-        console.log(recipe)
         return (
             <section className="RecipePage__BottomButtons">
                 <div className="RecipePage__BottomButtons__FlexBox">

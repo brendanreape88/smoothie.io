@@ -18,7 +18,6 @@ class HomePageDisplay extends Component {
     render() {
         const data = this.props.recipeData
         const { numberOfSmoothies } = this.state
-        console.log(data)
         return (
             <>
                 <section className="HomePage__HomeDisplay">
@@ -28,10 +27,20 @@ class HomePageDisplay extends Component {
                             if(i < numberOfSmoothies) {
                                 return <div className="HomePage__HomeDisplay__FlexBox__Item" key={d.id}>
                                     <Link to={`/recipe/${d.id}`}>
-                                        <img 
-                                            src="https://joyfoodsunshine.com/wp-content/uploads/2019/07/green-smoothie-recipe-2.jpg" 
-                                            alt="delicious green smoothie surrounded by fruit and kale"
-                                    />
+                                        {d.smoothiePicture
+                                            ?(
+                                                <img 
+                                                    src={`${d.smoothiePicture}`} 
+                                                    alt={`a smoothie named ${d.smoothieName}`}
+                                                />
+                                            )
+                                            :(
+                                                <img 
+                                                    src="https://i.ibb.co/VSS1v7M/smoothie-art-png-tiny.png"
+                                                    alt={`a smoothie named ${d.smoothieName}`}
+                                                />
+                                            )
+                                        }
                                     </Link>
                                     <div className="Item__Controls">
                                         <h3 className="CardTitle">
@@ -87,4 +96,3 @@ class HomePageDisplay extends Component {
 }
 
 export default HomePageDisplay
-

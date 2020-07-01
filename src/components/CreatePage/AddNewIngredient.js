@@ -10,22 +10,8 @@ class AddNewIngredient extends Component {
         event.preventDefault();
         const itemCategory = event.target.newItemCategory.value
         const itemName = event.target.newItemName.value
-        console.log(itemCategory, itemName)
         this.context.addNewIngredient(itemCategory, itemName)
     }
-
-    /*handleAddNewItem = (event) => {
-        event.preventDefault();
-        const itemCategory = event.target.newItemCategory.value
-        const itemName = event.target.newItemName.value
-        this.context.ingredientsData.forEach((item) => {
-            if(Number(itemCategory) === item.id){
-            return item.ingredients.push(itemName)
-            }
-        })
-        console.log(this.context, 'result')
-    }*/
-
 
     render () {
         const data = this.context.ingredientsData

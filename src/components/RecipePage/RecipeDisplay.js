@@ -6,7 +6,6 @@ class RecipeDisplay extends Component {
     static contextType = UserDataContext
     render() {
         const recipe = this.props.match
-        console.log(this.props.match)
         return (
             <section className="RecipePage__RecipeDisplay">
                 <h1>{recipe.smoothieName}</h1>
@@ -20,7 +19,7 @@ class RecipeDisplay extends Component {
                         <h3>Recipe</h3>
                             <ul>
                                 {recipe.recipe.map(r => 
-                                    <li>{r}</li>
+                                    <li key={r}>{r}</li>
                                 )}
                             </ul>
                     </div>

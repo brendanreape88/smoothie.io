@@ -6,7 +6,6 @@ class ReviewBox extends Component {
     static contextType = UserDataContext
     render() {
         const reviews = this.props.match
-        console.log(reviews)
         return (
             <section className="RecipePage__ReviewsBox">
                 <h3>Reviews</h3>
@@ -20,7 +19,7 @@ class ReviewBox extends Component {
                     )
                     : (
                         reviews.map(r => 
-                            <div className="IndividualReviewBox">
+                            <div className="IndividualReviewBox" key={r.headline}>
                                 <div className="IndividualReviewBox__User">
                                     <img
                                         src="https://joyfoodsunshine.com/wp-content/uploads/2019/07/green-smoothie-recipe-2.jpg"

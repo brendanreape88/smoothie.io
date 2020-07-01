@@ -17,7 +17,6 @@ class RecipePage extends Component {
     static contextType = UserDataContext
 
     handleFavorite = (recipeId) => {
-        console.log(recipeId)
         this.context.toggleFavorites(recipeId)
     }
 
@@ -32,7 +31,6 @@ class RecipePage extends Component {
         const [id] = this.props.match.params.recipeId.split('#');
         const recipe = this.context.findRecipe(Number(id));
         const reviews = this.context.findReviews(Number(id));
-        console.log(reviews)
         return (
             <div className="RecipePage">
                 <main className="RecipePage__Main">

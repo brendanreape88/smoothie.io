@@ -50,6 +50,7 @@
 
 .HomePage__HomeDisplay__FlexBox__Item img {
     height: 298px;
+    width: 298px;
     border-radius: 10px;
 }
 

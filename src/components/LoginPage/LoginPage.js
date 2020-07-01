@@ -11,11 +11,8 @@ class LoginPage extends Component {
         event.preventDefault();
         const username = event.target.username.value
         const password = event.target.password.value
-        console.log(username, password)
         const userData = this.context.userData
-        findLogin(userData, username, password)//ok, so what are you doing with this?
-        //shouldn't the helper function just confirm that the username and password is correct,
-        //then change state to "isLoggedIn", then give an auth token?
+        findLogin(userData, username, password)
     }
 
     render() {
@@ -25,28 +22,26 @@ class LoginPage extends Component {
                     <h1>Login</h1>
                     <form onSubmit={this.onLogin}>
                         <label htmlFor="username">
-                            <input 
-                                type="text"
-                                name="username"
-                                id="username"
-                                required
-                            />
-                            <br/>
                             username
-                            <br/>
                         </label>
                         <br/>
+                        <input 
+                            type="text"
+                            name="username"
+                            id="username"
+                            required
+                        />    
+                        <br/>
                         <label htmlFor="password">
-                            <input 
-                                type="text"
-                                name="password"
-                                id="password"
-                                required 
-                            />
-                            <br/>
                             password
-                            <br/>
                         </label>
+                        <br/>
+                        <input 
+                            type="text"
+                            name="password"
+                            id="password"
+                            required 
+                        />
                         <br/>
                         <button>submit</button>
                     </form>

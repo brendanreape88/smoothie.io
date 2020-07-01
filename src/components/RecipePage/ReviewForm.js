@@ -20,7 +20,6 @@ class ReviewForm extends Component {
         const recipeId = this.props.match.id
         const userName = this.context.userData.userName
         const userId = this.context.userData.id
-        console.log(headline, review, recipeId, userName, userId)
         this.context.handleReviewSubmit(headline, review, recipeId, userName, userId)
         this.handleSubmitTernary();
     }
@@ -45,32 +44,32 @@ class ReviewForm extends Component {
                     )
                     : (
                         <form onSubmit={this.handleReviewSubmit}>
-                            <label for="headline">
+                            <label htmlFor="headline">
                                 Add a headline
-                                <br/>
-                                <input
-                                    type="text"
-                                    placeholder="What's most important to know?"
-                                    size="33"
-                                    name="headline"
-                                    id="headline"
-                                    required
-                                />
-                                <br/>
                             </label>
-                            <label for="review">
+                            <br/>
+                            <input
+                                type="text"
+                                placeholder="What's most important to know?"
+                                size="33"
+                                name="headline"
+                                id="headline"
+                                required
+                            />
+                            <br/>
+                            <label htmlFor="review">
                                 Write your review
-                                <br/>
-                                <textarea
-                                    placeholder='Was this smoothie "yay" or "nay"? Why?'
-                                    rows="10"
-                                    cols="50"
-                                    name="review"
-                                    id="review"
-                                    required
-                                />
-                                <br/>
                             </label>
+                            <br/>
+                            <textarea
+                                placeholder='Was this smoothie "yay" or "nay"? Why?'
+                                rows="10"
+                                cols="50"
+                                name="review"
+                                id="review"
+                                required
+                            />
+                            <br/>
                             <button>submit</button>
                         </form>
                     )

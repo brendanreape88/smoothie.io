@@ -8,7 +8,6 @@ class HomePage extends Component {
   static contextType = UserDataContext
 
   handleFavorite = (recipeId) => {
-    console.log(recipeId)
     this.context.toggleFavorites(recipeId)
   }
 
@@ -43,5 +42,3 @@ class HomePage extends Component {
 }
 
 export default HomePage
-
-//const recipeId = event.target.getAttribute("data-recipeId")
