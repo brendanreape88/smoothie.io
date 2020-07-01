@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import userDataContext from '../../contexts/userDataContext'
+import UserDataContext from '../../contexts/UserDataContext'
 import './RecipePage.css'
 
 class RecipeDisplay extends Component {
-    static contextType = userDataContext
+    static contextType = UserDataContext
     render() {
         const recipe = this.props.match
+        console.log(this.props.match)
         return (
             <section className="RecipePage__RecipeDisplay">
                 <h1>{recipe.smoothieName}</h1>

@@ -63,6 +63,6 @@
     border-radius: 10px;
 }
 
-.Ingredients__Item label {
+.Ingredients__Item span {
     padding: 5px;
 }

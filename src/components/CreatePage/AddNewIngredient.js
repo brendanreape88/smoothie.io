@@ -1,18 +1,31 @@
 import React, { Component } from 'react'
-import ingredientsDataContext from '../../contexts/ingredientsDataContext'
+import IngredientsDataContext from '../../contexts/IngredientsDataContext'
 import './CreatePage.css'
 
 class AddNewIngredient extends Component {
 
-    static contextType = ingredientsDataContext
+    static contextType = IngredientsDataContext
 
     handleAddNewItem = (event) => {
         event.preventDefault();
         const itemCategory = event.target.newItemCategory.value
-        console.log(itemCategory)
         const itemName = event.target.newItemName.value
-        console.log(itemName)
+        console.log(itemCategory, itemName)
+        this.context.addNewIngredient(itemCategory, itemName)
     }
+
+    /*handleAddNewItem = (event) => {
+        event.preventDefault();
+        const itemCategory = event.target.newItemCategory.value
+        const itemName = event.target.newItemName.value
+        this.context.ingredientsData.forEach((item) => {
+            if(Number(itemCategory) === item.id){
+            return item.ingredients.push(itemName)
+            }
+        })
+        console.log(this.context, 'result')
+    }*/
+
 
     render () {
         const data = this.context.ingredientsData
@@ -25,7 +38,7 @@ class AddNewIngredient extends Component {
                     >
                     {data.map(d =>
                         <option
-                            value={d.id}
+                            value={d.category}
                         >
                             {d.category}
                         </option>

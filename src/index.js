@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
 import { BrowserRouter } from 'react-router-dom';
-import { userDataProvider } from './contexts/userDataContext'
-import { ingredientsDataProvider } from './contexts/ingredientsDataContext'
+import { UserDataProvider } from './contexts/UserDataContext'
+import { IngredientsDataProvider } from './contexts/IngredientsDataContext'
 import './index.css';
 
 ReactDOM.render(
     <BrowserRouter>
-        <userDataProvider>
-            <ingredientsDataProvider>
+        <UserDataProvider>
+            <IngredientsDataProvider>
                 <App />
-            </ingredientsDataProvider>
-        </userDataProvider>
+            </IngredientsDataProvider>
+        </UserDataProvider>
     </BrowserRouter>,
     document.getElementById('root')
 );

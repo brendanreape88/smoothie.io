@@ -1,15 +1,32 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './RecipePage.css'
 
 class RecipeButtons extends Component {
+
     render() {
+        const recipe = this.props.match
+        console.log(recipe)
         return (
             <section className="RecipePage__BottomButtons">
                 <div className="RecipePage__BottomButtons__FlexBox">
-                    <button>favorite</button>
-                    <button>customize</button>
                     <button
-                        onClick={this.handleReviewButtonClick}
+                        onClick={() => this.props.favorite(recipe.id)}
+
+                    >
+                        favorite
+                    </button>
+                    <button>
+                        <Link to={{
+                            pathname: `/create`,
+                            prepopulate: true,
+                            customId: `${recipe.id}`
+                        }}>
+                            customize
+                        </Link>
+                    </button>
+                    <button
+                        onClick={this.props.click}
                     >
                         review
                     </button>

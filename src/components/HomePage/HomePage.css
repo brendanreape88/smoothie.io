@@ -35,6 +35,11 @@
     padding: 20px;
 }
 
+.HomePage__HomeDisplay__FlexBox {
+    display: flex;
+    flex-direction: column;
+}
+
 .HomePage__HomeDisplay__FlexBox__Item {
     margin: 10px;
     background-color: rgb(0, 82, 0);
@@ -58,18 +63,27 @@
     margin: 0;
 }
 
+.homeActive {
+    color: red !important;
+    font-weight: bold !important;
+}
+
 @media only screen and (min-width: 481px) {
-/*probably can only fit 2 items side by side w/ 600px width or more*/
+
 .HomePage__Main {
-    max-width: 600px;
+    max-width: 1000px;
+}
+
+.HomePage__HomeDisplay__FlexBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
 }
 
 }
 
 @media only screen and (min-width: 835px) {
-
-.HomegPage__Main {
-    max-width: 1000px;
-}
 
 }

@@ -2,23 +2,41 @@ import React, { Component } from 'react'
 import './RegisterPage.css'
 
 class RegisterPage extends Component {
+
+    onRegister = (event) => {
+        event.preventDefault();
+        const desiredUsername = event.target.desiredUsername.value
+        const desiredPassword = event.target.desirePassword.value
+        console.log(desiredUsername, desiredPassword)
+    }
+
     render() {
         return (
             <div className="RegisterPage">
-                <main class="RegisterPage__Main">
+                <main className="RegisterPage__Main">
                     <h1>Register</h1>
-                    <form>
-                        <label>
-                            <input type="text" />
+                    <form onSubmit={this.onRegister}>
+                        <label htmlFor="desiredUsername">
+                            <input 
+                                type="text"
+                                name="desiredUsername"
+                                id="desiredUsername"
+                                required
+                            />
                             <br/>
                             desired username
                             <br/>
                         </label>
                         <br/>
-                        <label>
-                            <input type="text" />
+                        <label htmlFor="desiredPassword">
+                            <input 
+                                type="text"
+                                name="desiredPassword"
+                                id="desiredPassword"
+                                required
+                             />
                             <br/>
-                            password
+                            desired password
                             <br/>
                         </label>
                         <br/>

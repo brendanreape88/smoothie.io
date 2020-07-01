@@ -32,6 +32,11 @@
     padding: 20px;
 }
 
+.RecipePage__BottomButtons a {
+    text-decoration: none;
+    color: black
+}
+
 .RecipePage__RecipeDisplay {
     padding: 20px;
 }
@@ -81,6 +86,12 @@
 
 .IndividualReviewBox__User span {
     padding: 10px;
+}
+
+.TernaryBox {
+    background: rgb(245, 245, 245);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 @media only screen and (min-width: 481px) {

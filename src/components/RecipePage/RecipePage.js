@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
-import userDataContext from '../../contexts/userDataContext'
+import UserDataContext from '../../contexts/UserDataContext'
 import RecipeDisplay from './RecipeDisplay'
 import RecipeButtons from './RecipeButtons'
 import ReviewForm from './ReviewForm'
 import ReviewBox from './ReviewBox'
-import { findRecipe } from '../../helpers'
 import './RecipePage.css'
 
 class RecipePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showForm: false
+            showForm: this.props.location.reviewOn ? this.props.location.reviewOn : false
         }
     }
 
-    static contextType = userDataContext
+    static contextType = UserDataContext
+
+    handleFavorite = (recipeId) => {
+        console.log(recipeId)
+        this.context.toggleFavorites(recipeId)
+    }
 
     handleReviewButtonClick = (event) => {
         const showForm = this.state.showForm
@@ -25,19 +29,24 @@ class RecipePage extends Component {
     }
 
     render() {
-        const data = this.context.userData
-        const userRecipes = data.reduce((results, d) => [...results, ...d.userRecipes], [])
-        const { recipeId } = this.props.match.params
-        const recipe = findRecipe(userRecipes, recipeId)
+        const [id] = this.props.match.params.recipeId.split('#');
+        const recipe = this.context.findRecipe(Number(id));
+        const reviews = this.context.findReviews(Number(id));
+        console.log(reviews)
         return (
             <div className="RecipePage">
                 <main className="RecipePage__Main">
                     <RecipeDisplay match={recipe}/>
-                    <RecipeButtons match={recipe}/>
+                    <RecipeButtons match={recipe} 
+                        click={this.handleReviewButtonClick}
+                        favorite={this.handleFavorite}
+                    />
                     {this.state.showForm &&
                         <ReviewForm match={recipe}/>
                     }
-                    <ReviewBox match={recipe}/>
+                    <ReviewBox match={reviews}
+                        click={this.handleReviewButtonClick}
+                    />
                 </main>
             </div>
         )

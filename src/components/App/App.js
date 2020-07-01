@@ -4,7 +4,7 @@ import Header from '../Header/Header'
 import LandingPage from '../LandingPage/LandingPage'
 import HomePage from '../HomePage/HomePage'
 import RecipePage from '../RecipePage/RecipePage'
-import CreatePage from '../CreatePage/CreatePage'
+import CreatePage2 from '../CreatePage/CreatePage2'
 import LoginPage from '../LoginPage/LoginPage'
 import RegisterPage from '../RegisterPage/RegisterPage'
 import NotFoundPage from '../NotFoundPage/NotFoundPage'
@@ -12,13 +12,6 @@ import Footer from '../Footer/Footer'
 import './App.css'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      userData: [],
-      ingredientsData: []
-    }
-  }
 
   render() {
     return (
@@ -30,27 +23,38 @@ class App extends Component {
         <Switch>
           <Route
             exact
-            path={'/'}
+            path='/'
             component={LandingPage}
           />
           <Route
-            path={'/home'}
+            exact
+            path='/home' 
             component={HomePage}
           />
           <Route
-            path={'/recipe/:recipeId'}
+            exact
+            path='/home/favorites' 
+            render={() => <HomePage section="favorites"/>}
+          />
+          <Route
+            exact
+            path='/home/my-recipes' 
+            render={() => <HomePage section="user"/>}
+          />
+          <Route
+            path='/recipe/:recipeId'
             component={RecipePage}
           />
           <Route
-            path={'/create'}
-            component={CreatePage}
+            path='/create'
+            component={CreatePage2}
           />
           <Route
-            path={'/login'}
+            path='/login'
             component={LoginPage}
           />
           <Route
-            path={'/register'}
+            path='/register'
             component={RegisterPage}
           />
           <Route
