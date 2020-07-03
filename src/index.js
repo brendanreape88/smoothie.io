@@ -7,7 +7,7 @@ import { IngredientsDataProvider } from './contexts/IngredientsDataContext'
 import './index.css';
 
 ReactDOM.render(
-    <BrowserRouter>
+    <BrowserRouter basename="/smoothie.io">
         <UserDataProvider>
             <IngredientsDataProvider>
                 <App />
