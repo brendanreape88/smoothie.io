@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/smoothie.io/precache-manifest.059cee3ab7ee64c7303cd8ad2b3320f7.js"
+  "/smoothie.io/precache-manifest.9c12e6e258f88233bafc63f76235d880.js"
 );
 
 self.addEventListener('message', (event) => {
