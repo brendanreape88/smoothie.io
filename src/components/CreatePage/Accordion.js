@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import IngredientsDataContext from '../../contexts/IngredientsDataContext'
+import SmoothieContext from '../../contexts/SmoothieContext'
+import IngredientsApiService from '../../services/ingredients-api-service'
 import './CreatePage.css'
 
 class Accordion extends Component {
@@ -10,7 +11,14 @@ class Accordion extends Component {
         }
     }
     
-    static contextType = IngredientsDataContext
+    static contextType = SmoothieContext
+
+    componentDidMount() {
+        IngredientsApiService.getIngredients()
+            .then(ingredients => {
+                this.context.updateIngredients(ingredients)
+            })
+    }
 
     changeAccordion(event, id) {
         event.preventDefault();
@@ -23,44 +31,51 @@ class Accordion extends Component {
 
     handleAddRecipeItem = (event) => {
         event.preventDefault();
-        const ingredientName = event.target.ingredient.value
-        const ingredientAmount = event.target.amount.value
-        const ingredientUnits = event.target.units.value
-        const recipeString = ingredientAmount + ' ' + ingredientUnits + ' ' + ingredientName
-        this.props.stringDisplay(recipeString)
+        const title = event.target.title.value
+        const ingredient_id = event.target.ingredient_id.value
+        const quantity = event.target.quantity.value
+        const units = event.target.units.value
+        const newRecipeLine = { ingredient_id, title, quantity, units } 
+        this.props.recipeLineDisplay(newRecipeLine)
     }
 
     render () {
         const { openCategory } = this.state;
-        const data = this.context.ingredientsData
+        const ingredients = this.context.ingredients
+        const categories = [...new Set(ingredients.map(i => i.category))];
+        const ingredientsFor = (c) => ingredients.filter(i => i.category === c);
         return (
             <div className="Ingredients__Box">
                 <h3>Pick your ingreditents</h3>
                 <div className="Ingredients__List">
-                    {data.map(d => 
-                        <div className="Ingredients__Category" key={d.id}>
-                            <h4>
-                                <button onClick={event => this.changeAccordion(event, d.id)}>
-                                    {d.category}
-                                </button>
-                            </h4>
-                            {d.id === openCategory &&
-                                d.ingredients.map(i => 
-                                    <div className="Ingredients__Item" key={i}>
-                                        <form onSubmit={this.handleAddRecipeItem}>
-                                            <span>{i}</span>
+                    {categories.map(c => 
+                        <div className="Ingredients__Category" key={c}>
+                            <button onClick={event => this.changeAccordion(event, c)}>
+                                {c}
+                            </button>
+                            {c === openCategory &&
+                                ingredientsFor(c).map(i => 
+                                    <div className="Ingredients__Item" key={i.id}>
+                                        <form className="accordionForm" onSubmit={this.handleAddRecipeItem}>
+                                            <span>{i.title}</span>
                                             <input
                                                 type="hidden"
-                                                name="ingredient"
-                                                id="ingredient"
-                                                value={i}
+                                                name="ingredient_id"
+                                                id="ingredient_id"
+                                                value={i.id}
                                             />
                                             <input
-                                                name="amount"
-                                                id="amount"
+                                                type="hidden"
+                                                name="title"
+                                                id="title"
+                                                value={i.title}
+                                            />
+                                            <input
+                                                name="quantity"
+                                                id="quantity"
                                                 type="text"
-                                                placeholder="amount"
-                                                size="6"
+                                                placeholder="quantity"
+                                                size="7"
                                                 required
                                             />
                                             <input
@@ -70,7 +85,7 @@ class Accordion extends Component {
                                                 placeholder="units"
                                                 size="4"
                                             />
-                                            <button>add</button>
+                                            <button className="add">add</button>
                                         </form>
                                     </div>
                                 )}   

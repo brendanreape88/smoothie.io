@@ -1,48 +1,77 @@
 import React, { Component } from 'react'
-import IngredientsDataContext from '../../contexts/IngredientsDataContext'
+import SmoothieContext from '../../contexts/SmoothieContext'
+import IngredientsApiService from '../../services/ingredients-api-service'
 import './CreatePage.css'
 
 class AddNewIngredient extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            ingredientSubmitted: false
+        }
+    }
 
-    static contextType = IngredientsDataContext
+    static contextType = SmoothieContext
 
     handleAddNewItem = (event) => {
         event.preventDefault();
-        const itemCategory = event.target.newItemCategory.value
-        const itemName = event.target.newItemName.value
-        this.context.addNewIngredient(itemCategory, itemName)
+        const category = event.target.newItemCategory.value
+        const title = event.target.newItemTitle.value
+        IngredientsApiService.postIngredient(title, category)
+        this.setState({ingredientSubmitted: true})
+    }
+
+    addAnother = (event) => {
+        event.preventDefault();
+        this.setState({ingredientSubmitted: false})
     }
 
     render () {
-        const data = this.context.ingredientsData
+        const ingredients = this.context.ingredients
+        const categories = [...new Set(ingredients.map(i => i.category))];
         return (
-            <form onSubmit={this.handleAddNewItem}>
-                <label>
-                    Category
-                    <select
-                        name="newItemCategory"
-                    >
-                    {data.map(d =>
-                        <option
-                            value={d.category}
-                        >
-                            {d.category}
-                        </option>
-                    )}
-                    </select>
-                </label>
-                <br/>
-                <label>
-                    Name
-                    <input
-                        name="newItemName"
-                        type="text" 
-                        placeholder="ie: starfuit"
-                    />
-                </label>
-                <br/>
-                <button>add</button>
-            </form>
+            <>
+                {this.state.ingredientSubmitted
+                    ? ( 
+                        <div>
+                            <h1>Thanks!</h1>
+                            <h3>We got your submission : )</h3>
+                            <button onClick={this.addAnother}>add another</button>
+                        </div>
+                    )
+                    : (
+                        <form className="newIngredientForm" onSubmit={this.handleAddNewItem}>
+                            <label>
+                                Category:
+                            </label>
+                            <select
+                                    name="newItemCategory"
+                                >
+                                {categories.map(i =>
+                                    <option
+                                        value={i}
+                                    >
+                                        {i}
+                                    </option>
+                                )}
+                            </select>
+                            <br/>
+                            <br/>
+                            <label>
+                                Name:
+                            </label>
+                            <input
+                                    name="newItemTitle"
+                                    type="text" 
+                                    placeholder="ie: starfuit"
+                                />
+                            <br/>
+                            <br/>
+                            <button>add</button>
+                        </form>
+                    )
+                }
+           </> 
         )
     }
 }

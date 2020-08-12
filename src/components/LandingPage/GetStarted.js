@@ -9,11 +9,6 @@ class GetStarted extends Component {
                 <h3>Get started</h3>
                 <div className="LandingPage__GetStarted__Box">
                     <h4>
-                        <Link to='/register'>
-                            Register
-                        </Link>
-                    </h4>
-                    <h4>
                         <Link to='/login'>
                             Login
                         </Link>

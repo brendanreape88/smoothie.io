@@ -1,30 +1,47 @@
 import React, { Component } from 'react'
-import UserDataContext from '../../contexts/UserDataContext'
 import './RecipePage.css'
 
 class RecipeDisplay extends Component {
-    static contextType = UserDataContext
+
     render() {
-        const recipe = this.props.match
+        const recipe = this.props.recipe || {recipe: "loading"}
+        const userData = recipe.user || {user_name: "loading"}
+        const smoothieData = recipe.smoothie || {smoothie: "loading", ingredients: ["loading"]}
         return (
-            <section className="RecipePage__RecipeDisplay">
-                <h1>{recipe.smoothieName}</h1>
-                <h3>made by {recipe.userName}</h3>
-                <div className="RecipePage__RecipeDisplay__FlexBox">
-                    <img 
-                        src="https://joyfoodsunshine.com/wp-content/uploads/2019/07/green-smoothie-recipe-2.jpg" 
-                        alt="delicious green smoothie surrounded by fruit and kale"
-                    />
-                    <div className="RecipeBox">
-                        <h3>Recipe</h3>
-                            <ul>
-                                {recipe.recipe.map(r => 
-                                    <li key={r}>{r}</li>
-                                )}
-                            </ul>
-                    </div>
-                </div>
-            </section>
+            <>
+                {!smoothieData
+                    ? (
+                        <div>
+                            <h1>loading...</h1>
+                        </div>
+                    )
+                    : (
+                        <section className="RecipePage__RecipeDisplay">
+                            <h1>{smoothieData.smoothie_name}</h1>
+                            <h3>made by {userData.user_name}</h3>
+                            <div className="RecipePage__RecipeDisplay__FlexBox">
+                                <img 
+                                    src={smoothieData.smoothie_pic} 
+                                    alt={`delicious smoothie named ${smoothieData.smoothie_name}`}
+                                />
+                                <div className="RecipeBox">
+                                    <h3>Recipe</h3>
+                                        <ul>
+                                            {smoothieData.ingredients.map(i => 
+                                                <>
+                                                    <li key={i.title}>
+                                                        {i.quantity} {i.units} {i.title}
+                                                    </li>
+                                                    <br/>
+                                                </>
+                                            )}
+                                        </ul>
+                                </div>
+                            </div>
+                        </section>
+                    )
+                }
+            </>
         )
     }
 }

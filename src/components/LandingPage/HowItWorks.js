@@ -12,10 +12,10 @@ class HowItWorks extends Component {
                         alt="delicious green smoothie surrounded by fruit and kale"
                     />
                     <ul>
-                        <li>Browse through the list of recipes submitted by our users</li>
-                        <li>Choose to "favorite" it, review it, or customize it</li>
-                        <li>You can also create a recipe from scratch</li>
-                        <li>Once your done you can publish it so others can enjoy it</li>
+                        <li>Browse through the list of recipes submitted by our users</li><br/>
+                        <li>Choose to "favorite" it, review it, or customize it</li><br/>
+                        <li>You can also create a recipe from scratch</li><br/>
+                        <li>Once you've made the perfect recipe, publish it so others can enjoy it</li>
                     </ul>
                 </div> 
             </section>

@@ -1,50 +1,79 @@
 import React, { Component } from 'react'
-import UserDataContext from '../../contexts/UserDataContext'
-import { findLogin } from '../../helpers'
+import SmoothieContext from '../../contexts/SmoothieContext'
 import './LoginPage.css'
+import AuthApiService from '../../services/auth-api-service'
 
 class LoginPage extends Component {
+    
+    constructor(props) {
+        super(props)
+        this.state = {
+            clickedLogIn: false
+        }
+    }
 
-    static contextType = UserDataContext
+    static contextType = SmoothieContext
 
     onLogin = (event) => {
         event.preventDefault();
-        const username = event.target.username.value
+        const user_name = event.target.user_name.value
         const password = event.target.password.value
-        const userData = this.context.userData
-        findLogin(userData, username, password)
+        this.setState({ clickedLogIn: true })
+        AuthApiService.getUsers()
+        .then(users => {
+            const userLog = users.filter(u => u.user_name === user_name && u.password === password)
+            const user = userLog[0]
+            if(!user) {
+                alert('incorrect username or password')
+            } else {
+                this.context.logIn(user)
+                this.props.history.push(`/home`)
+            }
+        })
     }
 
     render() {
         return (
             <div className="LoginPage">
                 <main className="LoginPage__Main">
-                    <h1>Login</h1>
-                    <form onSubmit={this.onLogin}>
-                        <label htmlFor="username">
-                            username
-                        </label>
-                        <br/>
-                        <input 
-                            type="text"
-                            name="username"
-                            id="username"
-                            required
-                        />    
-                        <br/>
-                        <label htmlFor="password">
-                            password
-                        </label>
-                        <br/>
-                        <input 
-                            type="text"
-                            name="password"
-                            id="password"
-                            required 
-                        />
-                        <br/>
-                        <button>submit</button>
-                    </form>
+                    {this.props.clickedLogIn
+                        ?(
+                            <div className="Logging_In">
+                                <h3>logging in...</h3>
+                            </div>
+                        )
+                        :(
+                            <>
+                                <h1>Login</h1>
+                                <form onSubmit={this.onLogin}>
+                                    <label htmlFor="username">
+                                        username
+                                    </label>
+                                    <br/>
+                                    <input 
+                                        type="text"
+                                        name="user_name"
+                                        id="user_name"
+                                        required
+                                    />    
+                                    <br/>
+                                    <label htmlFor="password">
+                                        password
+                                    </label>
+                                    <br/>
+                                    <input 
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        required 
+                                    />
+                                    <br/>
+                                    <br/>
+                                    <button>submit</button>
+                                </form>
+                            </>
+                        )
+                    }
                 </main>
             </div>
         )

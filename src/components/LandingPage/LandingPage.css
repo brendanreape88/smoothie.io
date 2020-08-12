@@ -23,12 +23,19 @@
 
 .LandingPage__Main h3 {
     font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h4 {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .LandingPage__Main li {
     font-size: 18px;
     font-weight: 200;
-    list-style-type: none;
+    list-style: inside;
 }
 
 .LandingPage__Main a {

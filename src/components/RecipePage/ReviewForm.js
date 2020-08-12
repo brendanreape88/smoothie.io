@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import UserDataContext from '../../contexts/UserDataContext'
+import SmoothieContext from '../../contexts/SmoothieContext'
+import ReviewsApiService from '../../services/reviews-api-service'
 import './RecipePage.css'
 
 class ReviewForm extends Component {
@@ -11,16 +12,15 @@ class ReviewForm extends Component {
         }
     }
 
-    static contextType = UserDataContext
+    static contextType = SmoothieContext
 
     handleReviewSubmit = (event) => {
         event.preventDefault();
         const headline = event.target.headline.value
         const review = event.target.review.value
-        const recipeId = this.props.match.id
-        const userName = this.context.userData.userName
-        const userId = this.context.userData.id
-        this.context.handleReviewSubmit(headline, review, recipeId, userName, userId)
+        const recipe_id = this.props.recipe.smoothie.recipe_id 
+        const user_id = this.props.recipe.user.user_id
+        ReviewsApiService.postReview(headline, review, recipe_id, user_id)
         this.handleSubmitTernary();
     }
 

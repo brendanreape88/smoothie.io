@@ -1,9 +1,18 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import App from './src/components/App';
+import ReactDOM from 'react-dom';
+import App from '../App/App';
+import { BrowserRouter } from 'react-router-dom'
+import { SmoothieProvider } from '../../contexts/SmoothieContext';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+it('renders without crashing', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(
+    <BrowserRouter>
+      <SmoothieProvider>
+        <App />
+      </SmoothieProvider>
+    </BrowserRouter>,
+    div
+  )
+  ReactDOM.unmountComponentAtNode(div)
+})

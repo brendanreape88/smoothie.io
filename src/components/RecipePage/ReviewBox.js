@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import UserDataContext from '../../contexts/UserDataContext'
 import './RecipePage.css'
 
 class ReviewBox extends Component {
-    static contextType = UserDataContext
+
     render() {
-        const reviews = this.props.match
+        const reviews = this.props.reviews || [{headline: "loading", review: "loading", user_pic: "loading", user_name: "loading"}]
         return (
             <section className="RecipePage__ReviewsBox">
                 <h3>Reviews</h3>
@@ -22,10 +21,10 @@ class ReviewBox extends Component {
                             <div className="IndividualReviewBox" key={r.headline}>
                                 <div className="IndividualReviewBox__User">
                                     <img
-                                        src="https://joyfoodsunshine.com/wp-content/uploads/2019/07/green-smoothie-recipe-2.jpg"
-                                        alt="delicious green smoothie surrounded by fruit and kale"
+                                        src={r.user_pic}
+                                        alt={`avatar for ${r.user_name}`}
                                     />
-                                    <span>{r.userName}</span>
+                                    <span>{r.user_name}</span>
                                 </div>
                                 <div className="IndividualReviewBox__Review">
                                     <h4>"{r.headline}"</h4>

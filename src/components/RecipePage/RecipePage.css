@@ -21,7 +21,7 @@
 }
 
 .RecipePage__Main ul {
-    list-style-type: none;
+    list-style: inside;
 }
 
 .RecipePage__Main li {
@@ -50,6 +50,13 @@
 .RecipePage__RecipeDisplay__FlexBox img {
     height: 300px;
     border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.RecipeBox ul{
+    text-align: center;
+    padding: 0;
 }
 
 .RecipePage__ReviewForm {
