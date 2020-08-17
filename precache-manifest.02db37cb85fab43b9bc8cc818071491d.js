@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8bf01f3c95eb18c36716d526df50480a",
+    "revision": "589141a9cc7d3aa72637e4501ee90f88",
     "url": "/smoothie.io/index.html"
   },
   {
-    "revision": "f080cf14a14b006cfc39",
+    "revision": "8bd572db36561562195e",
     "url": "/smoothie.io/static/css/main.38cc5991.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/smoothie.io/static/js/2.6d2a229b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f080cf14a14b006cfc39",
-    "url": "/smoothie.io/static/js/main.ce7de980.chunk.js"
+    "revision": "8bd572db36561562195e",
+    "url": "/smoothie.io/static/js/main.b28c782f.chunk.js"
   },
   {
     "revision": "c643b783e2d71fa30061",
