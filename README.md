@@ -8,7 +8,7 @@ Smoothie.io helps you find amazing smoothie recipes, and also lets you customize
 
 ## Login Credentials:
 
-Username: greenguru
+Username: greenguru<br/>
 Password: Greenguru1!
 
 ## Browsing Recipes:
