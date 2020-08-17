@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 import SmoothieContext from "../../contexts/SmoothieContext";
 import "./Header.css";
 
@@ -17,7 +18,7 @@ class Header extends Component {
       <nav className="Header">
         <div className="Header__Logo">
           <div className="Icon">
-            <FontAwesomeIcon icon="fa-leaf" />
+            <FontAwesomeIcon icon={faLeaf} />
           </div>
           <div className="Title">
             <h1>

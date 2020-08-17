@@ -1,107 +1,101 @@
 .HomePage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .HomePage__Main {
-    padding-top: 50px;
-    padding-right: 10px;
-    padding-bottom: 50px;
-    padding-left: 10px;
-    text-align: center;
+  padding-top: 50px;
+  padding-right: 10px;
+  padding-bottom: 50px;
+  padding-left: 10px;
+  text-align: center;
 }
 
 .HomePage__Main ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
 }
 
 .HomePage__Main li {
-    display: inline-block;
-    font-weight: bold;
-    font-size: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .HomePage__Main a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .HomegPage__HomeDisplay {
-    padding: 20px;
+  padding: 20px;
 }
 
 .HomePage__HomeDisplay__FlexBox {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .HomePage__HomeDisplay__FlexBox__Item {
-    margin: 10px;
-    background-color: rgb(0, 82, 0);
-    border: black solid 1px;
-    border-radius: 10px;
-    width: 300px;
+  margin: 10px;
+  background-color: rgb(0, 82, 0);
+  border: black solid 1px;
+  border-radius: 10px;
+  width: 300px;
 }
 
 .HomePage__HomeDisplay__FlexBox__Item img {
-    height: 298px;
-    width: 298px;
-    border-radius: 10px;
-    object-fit: cover;
+  height: 298px;
+  width: 298px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .HomePage__BottomButtons__FlexBox {
-    padding: 20px;
+  padding: 20px;
 }
 
 .HomePage__BottomButtons__FlexBox button {
-    width: 100%;
-    height: 33px;
+  width: 100%;
+  height: 33px;
 }
 
 .CardTitle a {
-    color: white;
+  color: white;
 }
 
 .Item__Controls h3 {
-    color: white;
-    font-size: 20px;
-    margin: 0;
-    padding-top: 3px;
-    padding-bottom: 3px;
+  color: white;
+  font-size: 20px;
+  margin: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .homeActive {
-    color: rgb(0, 82, 0) !important;
-    font-weight: bold !important;
+  color: rgb(0, 82, 0) !important;
+  font-weight: bold !important;
 }
 
 .Getting_Smoothies {
-    padding: 33px;
-    background-color: rgb(245, 245, 245);
+  padding: 33px;
+  background-color: rgb(245, 245, 245);
 }
 
 @media only screen and (min-width: 481px) {
-
-.HomePage__Main {
+  .HomePage__Main {
     max-width: 1000px;
-}
+  }
 
-.HomePage__HomeDisplay__FlexBox {
+  .HomePage__HomeDisplay__FlexBox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-}
-
-}
-
-@media only screen and (min-width: 835px) {
-
+  }
 }
