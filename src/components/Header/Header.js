@@ -8,7 +8,7 @@ import "./Header.css";
 class Header extends Component {
   static contextType = SmoothieContext;
 
-  logOut = (event) => {
+  logOut = () => {
     this.context.logOut();
   };
 
@@ -18,7 +18,9 @@ class Header extends Component {
       <nav className="Header">
         <div className="Header__Logo">
           <div className="Icon">
-            <FontAwesomeIcon icon={faLeaf} />
+            <Link to="/">
+              <FontAwesomeIcon icon={faLeaf} />
+            </Link>
           </div>
           <div className="Title">
             <h1>

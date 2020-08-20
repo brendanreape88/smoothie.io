@@ -22,6 +22,11 @@ class RecipePage extends Component {
 
   static contextType = SmoothieContext;
 
+  //Within the componentDidMount, the id for the recipe that is to be displayed is
+  //grabbed from the params of the props. Then two fetch requests are made: (1) to
+  //get the data for the recipe with the matching id, and (2) to get all the reviews
+  //for that recipe.
+
   componentDidMount() {
     const [recipeId] =
       this.props &&

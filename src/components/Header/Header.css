@@ -1,5 +1,5 @@
 .Header {
-  height: 50;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,8 +13,16 @@
   padding-left: 10px;
 }
 
+.Title {
+  display: none;
+}
+
 .Icon {
   font-size: 25px;
+}
+
+a {
+  color: white !important;
 }
 
 .Header h1 a {
@@ -31,4 +39,10 @@
   text-decoration: none;
   color: white;
   padding: 5px;
+}
+
+@media only screen and (min-width: 400px) {
+  .Title {
+    display: inline;
+  }
 }

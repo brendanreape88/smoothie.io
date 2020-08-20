@@ -6,6 +6,11 @@ import RecipesApiService from "../../services/recipes-api-service";
 import "./CreatePage.css";
 
 class RecipeBox extends Component {
+  //State is being used to check if this component was accessed by the user through
+  //the clicking of one of the "customize" buttons. If that button is clicked, the
+  //user wants to edit an existing recipe, so their form is prepopulated with the
+  //data from the recipe they selected.
+
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +22,9 @@ class RecipeBox extends Component {
   }
 
   static contextType = SmoothieContext;
+
+  //handleRecipeSubmit sends a newly created recipe to the smoothie.io database
+  //then dsplays a thank you message for the user.
 
   handleRecipeSubmit = (event) => {
     event.preventDefault();
