@@ -59,6 +59,10 @@ export class SmoothieProvider extends Component {
     this.setState({ ingredients });
   };
 
+  addIngredient = (ingredient) => {
+    this.updateIngredients([...this.state.ingredients, ingredient]);
+  };
+
   updateRecipe = (recipe) => {
     this.setState({ recipe });
   };
@@ -99,10 +103,12 @@ export class SmoothieProvider extends Component {
 
   logIn = (user) => {
     this.setState({ user });
+    localStorage.setItem("smoothie-user", user.user_name);
   };
 
   logOut = (event) => {
     this.setState({ user: null });
+    localStorage.removeItem("smoothie-user");
   };
 
   render() {
@@ -117,6 +123,7 @@ export class SmoothieProvider extends Component {
       updateFavorites: this.updateFavorites,
       toggleFavorites: this.toggleFavorites,
       updateIngredients: this.updateIngredients,
+      addIngredient: this.addIngredient,
       updateRecipe: this.updateRecipe,
       updateRecipes: this.updateRecipes,
       findRecipe: (id) => this.findRecipe(id),

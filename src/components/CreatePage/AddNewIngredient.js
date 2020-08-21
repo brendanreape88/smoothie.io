@@ -19,7 +19,12 @@ class AddNewIngredient extends Component {
     event.preventDefault();
     const category = event.target.newItemCategory.value;
     const title = event.target.newItemTitle.value;
-    IngredientsApiService.postIngredient(title, category);
+    IngredientsApiService.postIngredient(title, category).then(
+      (newIngredient) => {
+        this.context.addIngredient(newIngredient[0]);
+      }
+    );
+
     this.setState({ ingredientSubmitted: true });
   };
 

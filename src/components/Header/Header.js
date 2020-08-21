@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 import SmoothieContext from "../../contexts/SmoothieContext";
+import AuthApiService from "../../services/auth-api-service";
 import "./Header.css";
 
 class Header extends Component {
@@ -11,6 +12,19 @@ class Header extends Component {
   logOut = () => {
     this.context.logOut();
   };
+
+  componentDidMount() {
+    if (localStorage.getItem("smoothie-user")) {
+      AuthApiService.getUsers().then((users) => {
+        const userLog = users.filter(
+          (u) => u.user_name === localStorage.getItem("smoothie-user")
+        );
+        const user = userLog[0];
+
+        this.context.logIn(user);
+      });
+    }
+  }
 
   render() {
     const user = this.context.user;

@@ -97,7 +97,11 @@ class HomePageDisplay extends Component {
         <section className="HomePage__BottomButtons">
           <div className="HomePage__BottomButtons__FlexBox">
             <div className="BottomButton__More">
-              <button onClick={this.loadMoreSmoothies}>more smoothies</button>
+              {numberOfSmoothies < data.length ? (
+                <button onClick={this.loadMoreSmoothies}>more smoothies</button>
+              ) : (
+                <></>
+              )}
             </div>
             <div className="BottomButton__Create">
               <button>
