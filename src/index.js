@@ -6,7 +6,7 @@ import { SmoothieProvider } from "./contexts/SmoothieContext";
 import "./index.css";
 
 ReactDOM.render(
-  <BrowserRouter basename="/smoothie.io">
+  <BrowserRouter>
     <SmoothieProvider>
       <App />
     </SmoothieProvider>
